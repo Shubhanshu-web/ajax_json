@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/userform" method="post">
+    <input style="outline: none;" id="username" type="text" name="username" placeholder="username">
+    <input type="text" name="name" placeholder="name">
+    <input id="btn" type="submit">
+  </form>
+
+  <script>
+    document.querySelector('#username').addEventListener('input');
+    name = document.querySelector('#username').value;
+    
+    if(username !== ''){
+      fetch(`/username/${username}`)
+      .then(rawData => rawData.json())
+      .then(data => {
+        if(data !== null){
+          document.querySelector('#username').style.border = '1px solid red';
+        }else{
+          document.querySelector('#username').style.border = '1px solid black';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
